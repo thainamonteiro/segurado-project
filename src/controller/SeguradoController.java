@@ -1,12 +1,17 @@
 package controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.Segurado;
+import model.Seguro;
+import persistence.Dao;
 import service.SeguradoService;
 import service.SeguradoServiceImpl;
 
@@ -16,9 +21,9 @@ public class SeguradoController extends HttpServlet {
 	public SeguradoController() {
 		super();
 	}
-	
+
 	SeguradoService seguradoService = new SeguradoServiceImpl();
-	
+
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -33,17 +38,35 @@ public class SeguradoController extends HttpServlet {
 			segurado.setCorrentista(req.getParameter("correntista"));
 			segurado.setDiasVisita(req.getParameterValues("diasVisita"));
 			segurado.setData_nas(req.getParameter("data_nas"));
-			//segurado.setData_cad(req.getParameter("data_cad"));
 			segurado.setData_alt(req.getParameter("data_alt"));
+
+			List<Seguro> listaSeguro = new ArrayList<Seguro>();
+
+			for (String id : req.getParameterValues("seguro")) {
+				Seguro seguros = new Seguro();
+				seguros.setId(Integer.valueOf(id));
+				listaSeguro.add(seguros);
+			}
+			segurado.setSeguro(listaSeguro);
 			
+			if (req.getParameter("id") == null) {
+				seguradoService.salvar(segurado);
+				
+				req.setAttribute("mensagem", "Cadastrado com sucesso! :)");
 			
-			seguradoService.salvar(segurado);
+			} else {
+				Dao<Segurado> dao = new Dao<Segurado>();
+				
+				String id = req.getParameter("id");
+				segurado.setId(Integer.parseInt(id));
+				
+				dao.alterar(segurado);
+				
+				listarSegurados(req, dao);
+			}
 			
+			getServletContext().getRequestDispatcher("/seguro/listarsegurado.jsp").forward(req, resp);
 		
-			req.setAttribute("mensagem", "Cadastrado com sucesso! :)");
-			getServletContext().getRequestDispatcher("/listasegurado.jsp").forward(req, resp);
-
-
 		} catch (Exception e) {
 			e.printStackTrace();
 			req.setAttribute("mensagem", "Não foi cadastrado! :" + e.getMessage());
@@ -53,5 +76,63 @@ public class SeguradoController extends HttpServlet {
 
 	}
 
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String acao = req.getParameter("acao");
+
+		if (acao != null && "listarsegurado".equalsIgnoreCase(acao)) {
+
+			Dao<Segurado> dao = new Dao<Segurado>();
+
+			listarSegurados(req, dao);
+
+			getServletContext().getRequestDispatcher("/seguro/listarsegurado.jsp").forward(req, resp);
+
+		} else if (acao != null && "abrirseguro".equalsIgnoreCase(acao)) {
+
+			Dao<Segurado> dao = new Dao<Segurado>();
+
+			List<Seguro> listaSeguro = new ArrayList<>();
+			listaSeguro = dao.listaSeguro();
+			req.setAttribute("seguros", listaSeguro);
+			getServletContext().getRequestDispatcher("/seguro/cadastrarsegurado.jsp").forward(req, resp);
+
+		} else if (acao != null && "excluirsegurado".equalsIgnoreCase(acao)) {
+
+			Dao<Segurado> dao = new Dao<Segurado>();
+
+			String id = req.getParameter("id");
+
+			dao.remove(Segurado.class, Integer.parseInt(id));
+
+			List<Segurado> listaSegurado = dao.listaSegurado();
+			req.setAttribute("segurados", listaSegurado);
+
+			getServletContext().getRequestDispatcher("/seguro/listarsegurado.jsp").forward(req, resp);
 		
+		} else if (acao != null && "alterarsegurado".equalsIgnoreCase(acao)) {
+
+			Dao<Segurado> dao = new Dao<Segurado>();
+
+			String id = req.getParameter("id");
+
+			Segurado segurado = (Segurado) dao.findById(Segurado.class, Integer.parseInt(id));
+			
+			
+			req.setAttribute("segurado", segurado);
+			
+			List<Seguro> listaSeguro = new ArrayList<>();
+			listaSeguro = dao.listaSeguro();
+			req.setAttribute("seguros", listaSeguro);
+
+			getServletContext().getRequestDispatcher("/seguro/upd.jsp").forward(req, resp);
+		} 
+	}
+
+	public void listarSegurados(HttpServletRequest req, Dao<Segurado> dao) {
+		List<Segurado> listaSegurado = new ArrayList<>();
+		listaSegurado = dao.listaSegurado();
+		req.setAttribute("segurados", listaSegurado);
+	}
+
 }

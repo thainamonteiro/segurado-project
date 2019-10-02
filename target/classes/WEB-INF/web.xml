@@ -13,6 +13,10 @@
     <servlet-name>seguroControllerServlet</servlet-name>
     <servlet-class>controller.SeguroController</servlet-class>
   </servlet>
+    <servlet>
+    <servlet-name>Logout</servlet-name>
+    <servlet-class>controller.Logout</servlet-class>
+  </servlet>
   <servlet>
     <servlet-name>listaSegurosServlet</servlet-name>
     <servlet-class>controller.ListaSeguros</servlet-class>
@@ -21,7 +25,12 @@
     <servlet-name>listaSeguradosServlet</servlet-name>
     <servlet-class>controller.ListaSegurados</servlet-class>
   </servlet>
-
+  <servlet>
+    <servlet-name>excluirSeguradosServlet</servlet-name>
+    <servlet-class>controller.ExcluirSegurados</servlet-class>
+  </servlet>
+  
+  
   <servlet-mapping>
     <servlet-name>seguradoControllerServlet</servlet-name>
     <url-pattern>/seguro/seguradoControllerServlet</url-pattern>
@@ -34,7 +43,7 @@
     <servlet-name>seguroControllerServlet</servlet-name>
     <url-pattern>/seguro/seguroControllerServlet</url-pattern>
   </servlet-mapping>
-    <servlet-mapping>
+  <servlet-mapping>
     <servlet-name>listaSegurosServlet</servlet-name>
     <url-pattern>/seguro/listaSegurosServlet</url-pattern>
   </servlet-mapping>
@@ -42,10 +51,10 @@
     <servlet-name>listaSeguradosServlet</servlet-name>
     <url-pattern>/seguro/listaSeguradosServlet</url-pattern>
   </servlet-mapping>
-  <servlet>
-    <servlet-name>Logout</servlet-name>
-    <servlet-class>controller.Logout</servlet-class>
-  </servlet>
+   <servlet-mapping>
+    <servlet-name>excluirSeguradosServlet</servlet-name>
+    <url-pattern>/seguro/excluirSeguradosServlet</url-pattern>
+  </servlet-mapping>
   <servlet-mapping>
     <servlet-name>Logout</servlet-name>
     <url-pattern>/Logout</url-pattern>

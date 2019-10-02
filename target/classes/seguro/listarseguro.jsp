@@ -30,8 +30,13 @@
 
 							<c:forEach var="seguro" items="${seguros}">
 								<tr>
+									<td>${seguro.id}</td>
 									<td>${seguro.identificacao}</td>
 									<td>${seguro.valor}</td>
+   									<td>
+   										<a class="btn btn-warning btn-sm" href="${pageContext.request.contextPath}/seguro/seguroControllerServlet?acao=alterarseguro&id=${seguro.id}">Editar</a>
+  								 		<a class="btn btn-danger btn-sm"  href="${pageContext.request.contextPath}/seguro/seguroControllerServlet?acao=excluirseguro&id=${seguro.id}">Excluir</a>
+  								 	</td>
 								</tr>
 							</c:forEach>
 

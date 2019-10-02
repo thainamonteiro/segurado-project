@@ -18,12 +18,10 @@
 					   <a href="Logout"/>Sair do sistema</a>
 						<h5 class="card-title text-center">Menu</h5>
 						<center>
-							<a class="btn btn-primary" href="${pageContext.request.contextPath}/seguro/cadastrarsegurado.jsp"
-								role="button">Cadastro Segurado</a> <a class="btn btn-primary"
-								href="${pageContext.request.contextPath}/seguro/listaSeguradosServlet" role="button">Listar Segurado</a> <a
-								class="btn btn-primary" href="${pageContext.request.contextPath}/seguro/cadastrarseguro.jsp" role="button">Cadastrar
-								Seguro </a> <a class="btn btn-primary" href="${pageContext.request.contextPath}/seguro/listaSegurosServlet"
-								role="button">Listar Seguros</a>
+							<a class="btn btn-primary" href="${pageContext.request.contextPath}/seguro/seguradoControllerServlet?acao=abrirseguro" role="button">Cadastro Segurado</a> 
+							<a class="btn btn-primary" href="${pageContext.request.contextPath}/seguro/seguradoControllerServlet?acao=listarsegurado" role="button">Listar Segurado</a> 
+							<a class="btn btn-primary" href="${pageContext.request.contextPath}/seguro/seguroControllerServlet?acao=cadastrarseguro" role="button">Cadastrar Seguro </a> 
+							<a class="btn btn-primary" href="${pageContext.request.contextPath}/seguro/seguroControllerServlet?acao=listarseguro" role="button">Listar Seguros</a>
 						</center>
 					</div>
 				</div>

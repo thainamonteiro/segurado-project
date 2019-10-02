@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,47 +18,50 @@
 			<div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
 				<div class="card card-signin my-5">
 					<div class="card-body">
-					<a href="menu.jsp">Voltar</a>
-					${mensagem}
+						<a href="menu.jsp">Voltar</a> ${mensagem}
 						<h5 class="card-title text-center">Cadastrar Segurado</h5>
-						<form action="${pageContext.request.contextPath}/seguro/seguradoControllerServlet" method="post">
+						<form
+							action="${pageContext.request.contextPath}/seguro/seguradoControllerServlet?acao=listarsegurado"
+							method="post">
 							<div class="form-group">
-								<label>Nome:</label> 
-								<input type="text" id="nome" name="nome" class="form-control" placeholder="Digite seu nome:" required>
+								<label>Nome:</label> <input type="text" id="nome" name="nome"
+									class="form-control" placeholder="Digite seu nome:" required>
 							</div>
 							<div class="form-group">
-								<labe>Cpf:</label> <input
-									type="text" id="cpf" name="cpf" class="form-control" 
-									placeholder="Digite seu cpf:" required>
+								<labe>Cpf:</label> <input type="text" id="cpf" name="cpf"
+									class="form-control" placeholder="Digite seu cpf:" required>
 							</div>
 							<div class="form-group">
-								<label>Rg:</label> <input
-									type="text" id="rg" name="rg" class="form-control" placeholder="Digite seu rg:" required>
+								<label>Rg:</label> <input type="text" id="rg" name="rg"
+									class="form-control" placeholder="Digite seu rg:" required>
 							</div>
-							
+
 							<div class="form-group">
-								<label>Sexo:</label> 
+								<label>Sexo:</label>
 								<div class="form-check form-check-inline">
-								  <input class="form-check-input" type="radio" id="sexo" name="sexo" value="feminino">
-								  <label class="form-check-label">Feminino</label>
+									<input class="form-check-input" type="radio" id="sexo"
+										name="sexo" value="feminino"> <label
+										class="form-check-label">Feminino</label>
 								</div>
 								<div class="form-check form-check-inline">
-								  <input class="form-check-input" type="radio" id="sexo" name="sexo" value="masculino">
-								  <label class="form-check-label">Masculino</label>
+									<input class="form-check-input" type="radio" id="sexo"
+										name="sexo" value="masculino"> <label
+										class="form-check-label">Masculino</label>
 								</div>
 							</div>
-							
+
 							<div class="form-group">
-								<label>Correntista:</label> 
-								<select name="correntista" id="correntista" class="form-control">
+								<label>Correntista:</label> <select name="correntista"
+									id="correntista" class="form-control">
 									<option value="segunda">Sim</option>
 									<option value="terca">Não</option>
 								</select>
 							</div>
-							
+
 							<div class="form-group">
-								<label>Dias de visita:</label> 
-								<select multiple name="diasVisita" id="diasVisita" class="form-control" id="exampleFormControlSelect1">
+								<label>Dias de visita:</label> <select multiple
+									name="diasVisita" id="diasVisita" class="form-control"
+									id="exampleFormControlSelect1">
 									<option value="segunda">Segunda</option>
 									<option value="terca">Terça</option>
 									<option value="quarta">Quarta</option>
@@ -65,22 +69,26 @@
 									<option value="sexta">Sexta</option>
 								</select>
 							</div>
-							
+
 							<div class="form-group">
-								<label>Data de Nascimento:</label> 
-								<input type='date' id="data_nasc" name="data_nasc" class="form-control" />
+								<label>Data de Nascimento:</label> <input type='date'
+									id="data_nasc" name="data_nasc" class="form-control" />
 							</div>
-							
+
 							<div class="form-group">
-								<label>Data de Cadastro:</label> 
-								<input type='date' id="data_nasc" name="data_cad" class="form-control" />
+								<label>Seguro:</label>
+								<div class="form-check">
+									<c:forEach var="seguro" items="${seguros}">
+										<input class="form-check-input" type="checkbox"
+											value="${seguro.id}" name="seguro"
+											${paramValues.seguro.stream().anyMatch(v->v == '${seguro.id}').get() ? 'checked' : ''}>
+										<label class="form-check-label">
+											${seguro.identificacao} </label>
+										<br>
+									</c:forEach>
+								</div>
 							</div>
-							
-							<div class="form-group">
-								<label>Data de Alteração:</label> 
-								<input type='date' id="data_nasc" name="data_alt" class="form-control" />
-							</div>
-							
+
 							<button type="submit" class="btn btn-primary">Cadastrar</button>
 							<button type="reset" class="btn btn-primary">Apagar</button>
 						</form>

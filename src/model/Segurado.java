@@ -36,6 +36,7 @@ public class Segurado implements Serializable {
 	private String rg;
 	private String sexo;
 	private String correntista;
+	private String identificacao_seguro;
 	private String[] diasVisita;
 	private String data_nas;
 	private String data_cad;
@@ -45,7 +46,7 @@ public class Segurado implements Serializable {
 		super();
 	}
 
-	public Segurado(Integer id, String nome, String cpf, String rg, String sexo, String correntista, String[] diasVisita,
+	public Segurado(Integer id, String nome, String cpf, String rg, String sexo, String correntista, String identificacao_seguro, String[] diasVisita,
 			String data_nas, String data_cad, String data_alt) {
 		super();
 		this.id = id;
@@ -54,6 +55,7 @@ public class Segurado implements Serializable {
 		this.rg = rg;
 		this.sexo = sexo;
 		this.correntista = correntista;
+		this.identificacao_seguro = identificacao_seguro;
 		this.diasVisita = diasVisita;
 		this.data_nas = data_nas;
 		this.data_cad = data_cad;
@@ -113,6 +115,14 @@ public class Segurado implements Serializable {
 
 	public void setCorrentista(String correntista) {
 		this.correntista = correntista;
+	}
+
+	public String getIdentificacao_seguro() {
+		return identificacao_seguro;
+	}
+
+	public void setIdentificacao_seguro(String identificacao_seguro) {
+		this.identificacao_seguro = identificacao_seguro;
 	}
 
 	public String[] getDiasVisita() {

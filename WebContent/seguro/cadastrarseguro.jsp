@@ -19,7 +19,7 @@
 					<div class="card-body">
 						<a href="menu.jsp">Voltar</a>
 						<h5 class="card-title text-center">Cadastrar Seguro</h5>
-						<form action="${pageContext.request.contextPath}/seguro/seguroControllerServlet" method="post">
+						<form action="${pageContext.request.contextPath}/seguro/seguroControllerServlet?acao=listarseguro" method="post">
 							<div class="form-group">
 								<label>Seguros:</label> <br>
 								<div class="form-check form-check-inline">

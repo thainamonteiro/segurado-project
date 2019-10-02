@@ -1,9 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page import="java.util.List"%>
-<%@ page import="model.Segurado"%>
-<%@ page import="persistence.Dao"%>
 
 <!DOCTYPE html>
 <html>
@@ -19,8 +16,8 @@
 <body>
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-4 col-md-12 col-lg-8 mx-auto">
-				<div class="card card-signin my-5">
+			<div class="col-sm-4 col-md-12 col-lg-10  mx-auto" >
+				<div class="card card-signin my-5  shadow-lg">
 					<div class="card-body">
 						<h5 class="card-title text-center">Listar Segurado</h5>
 
@@ -44,9 +41,11 @@
 									<td>${segurado.rg}</td>
 									<td>${segurado.sexo}</td>
 									<td>${segurado.correntista}</td>
+   									<td><a class="btn btn-warning btn-sm" href="${pageContext.request.contextPath}/seguro/seguradoControllerServlet?acao=alterarsegurado&id=${segurado.id}">Editar</a>
+  								 	<a class="btn btn-danger btn-sm"  href="${pageContext.request.contextPath}/seguro/seguradoControllerServlet?acao=excluirsegurado&id=${segurado.id}">Excluir</a></td>
 								</tr>
-							</c:forEach>
-
+							</c:forEach>																				
+							
 						</table>
 
 						<span><a href="cadastrarsegurado.jsp">Adicionar Novo
