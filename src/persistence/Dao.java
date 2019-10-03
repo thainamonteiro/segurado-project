@@ -115,6 +115,7 @@ public class Dao<T> {
 			manager.remove(t);
 			manager.getTransaction().commit();
 		} catch (Exception e) {
+			e.printStackTrace();
 			manager.getTransaction().rollback();
 		}
 	}

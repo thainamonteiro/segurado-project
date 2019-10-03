@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -39,6 +40,7 @@ public class SeguradoController extends HttpServlet {
 			segurado.setDiasVisita(req.getParameterValues("diasVisita"));
 			segurado.setData_nas(req.getParameter("data_nas"));
 			segurado.setData_alt(req.getParameter("data_alt"));
+			segurado.setData_cad(new Date());
 
 			List<Seguro> listaSeguro = new ArrayList<Seguro>();
 

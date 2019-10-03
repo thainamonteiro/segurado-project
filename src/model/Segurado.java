@@ -3,6 +3,7 @@ package model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -39,7 +40,7 @@ public class Segurado implements Serializable {
 	private String identificacao_seguro;
 	private String[] diasVisita;
 	private String data_nas;
-	private String data_cad;
+	private Date  data_cad;
 	private String data_alt;
 
 	public Segurado() {
@@ -47,7 +48,7 @@ public class Segurado implements Serializable {
 	}
 
 	public Segurado(Integer id, String nome, String cpf, String rg, String sexo, String correntista, String identificacao_seguro, String[] diasVisita,
-			String data_nas, String data_cad, String data_alt) {
+			String data_nas, Date data_cad, String data_alt) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -141,11 +142,11 @@ public class Segurado implements Serializable {
 		this.data_nas = data_nas;
 	}
 
-	public String getData_cad() {
+	public Date getData_cad() {
 		return data_cad;
 	}
 
-	public void setData_cad(String data_cad) {
+	public void setData_cad(Date data_cad) {
 		this.data_cad = data_cad;
 	}
 
