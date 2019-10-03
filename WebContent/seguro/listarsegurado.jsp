@@ -16,9 +16,10 @@
 <body>
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-4 col-md-12 col-lg-10  mx-auto" >
+			<div class="col-sm-12 col-md-12 col-lg-7  mx-auto" >
 				<div class="card card-signin my-5  shadow-lg">
 					<div class="card-body">
+								<span><a href="${pageContext.request.contextPath}/seguro/menu.jsp">Voltar</a></span>
 						<h5 class="card-title text-center">Listar Segurado</h5>
 
 						<table class="table table-bordered">
@@ -27,8 +28,6 @@
 									<td>Nome</td>
 									<td>CPF</td>
 									<td>RG</td>
-									<td>Sexo</td>
-									<td>Correntista</td>
 									<td>Ações</td>
 									
 								</tr>
@@ -39,18 +38,12 @@
 									<td>${segurado.nome}</td>
 									<td>${segurado.cpf}</td>
 									<td>${segurado.rg}</td>
-									<td>${segurado.sexo}</td>
-									<td>${segurado.correntista}</td>
    									<td><a class="btn btn-warning btn-sm" href="${pageContext.request.contextPath}/seguro/seguradoControllerServlet?acao=alterarsegurado&id=${segurado.id}">Editar</a>
   								 	<a class="btn btn-danger btn-sm"  href="${pageContext.request.contextPath}/seguro/seguradoControllerServlet?acao=excluirsegurado&id=${segurado.id}">Excluir</a></td>
 								</tr>
 							</c:forEach>																				
 							
 						</table>
-
-						<span><a href="cadastrarsegurado.jsp">Adicionar Novo
-								Segurado</a></span>
-
 					</div>
 				</div>
 			</div>

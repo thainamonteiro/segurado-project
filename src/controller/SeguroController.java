@@ -21,7 +21,8 @@ public class SeguroController extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+		Dao<Seguro> dao = new Dao<Seguro>();
+		
 		try {
 
 			Seguro seguro = new Seguro();
@@ -30,85 +31,63 @@ public class SeguroController extends HttpServlet {
 			seguro.setValor(req.getParameter("valor"));
 
 			if (req.getParameter("id") == null) {
-
-				Dao<Seguro> dao = new Dao<Seguro>();
+				
 				dao.create(seguro);
+				listarSeguro(req, dao);
 				req.setAttribute("mensagem", "Cadastrado com sucesso! :)");
-
+				
 			} else {
-				Dao<Seguro> dao = new Dao<Seguro>();
-
 				String id = req.getParameter("id");
 				seguro.setId(Integer.parseInt(id));
-
 				dao.alterar(seguro);
-
-				List<Seguro> listaSeguro = new ArrayList<>();
-				listaSeguro = dao.listaSeguro();
-				
-				req.setAttribute("seguros", listaSeguro);
-
+				listarSeguro(req, dao);
 			}
-
+			
 			getServletContext().getRequestDispatcher("/seguro/listarseguro.jsp").forward(req, resp);
 
 		} catch (Exception e) {
 			e.printStackTrace();
 			req.setAttribute("mensagem", "Não foi cadastrado! :" + e.getMessage());
 			getServletContext().getRequestDispatcher("/seguro/cadastrarseguro.jsp").forward(req, resp);
-
 		}
-
 	}
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		Dao<Seguro> dao = new Dao<Seguro>();
 		String acao = req.getParameter("acao");
 
 		if (acao != null && "cadastrarseguro".equalsIgnoreCase(acao)) {
-
-			Dao<Seguro> dao = new Dao<Seguro>();
-
-			List<Seguro> listaSeguro = dao.listaSeguro();
-			req.setAttribute("seguro", listaSeguro);
-
+			
+			listarSeguro(req, dao);
 			getServletContext().getRequestDispatcher("/seguro/cadastrarseguro.jsp").forward(req, resp);
 
 		} else if (acao != null && "listarseguro".equalsIgnoreCase(acao)) {
 
-			Dao<Seguro> dao = new Dao<Seguro>();
-
-			List<Seguro> listaSeguro = new ArrayList<>();
-			listaSeguro = dao.listaSeguro();
-			req.setAttribute("seguros", listaSeguro);
-
+			listarSeguro(req, dao);
 			getServletContext().getRequestDispatcher("/seguro/listarseguro.jsp").forward(req, resp);
 
 		} else if (acao != null && "excluirseguro".equalsIgnoreCase(acao)) {
 
-			Dao<Seguro> dao = new Dao<Seguro>();
-
 			String id = req.getParameter("id");
-
 			dao.remove(Seguro.class, Integer.parseInt(id));
-
-			List<Seguro> listaSeguro = dao.listaSeguro();
-			req.setAttribute("seguros", listaSeguro);
-
+			listarSeguro(req, dao);
 			getServletContext().getRequestDispatcher("/seguro/listarseguro.jsp").forward(req, resp);
 
 		} else if (acao != null && "alterarseguro".equalsIgnoreCase(acao)) {
-			Dao<Seguro> dao = new Dao<Seguro>();
 
 			String id = req.getParameter("id");
-
 			Seguro seguro = (Seguro) dao.findById(Seguro.class, Integer.parseInt(id));
-
-			req.setAttribute("seguro", seguro);
-
+			req.setAttribute("seguros", seguro);
 			getServletContext().getRequestDispatcher("/seguro/updseguro.jsp").forward(req, resp);
 
 		}
+	}
+	
+	public void listarSeguro(HttpServletRequest req, Dao<Seguro> dao) {
+		List<Seguro> listaSeguro = new ArrayList<>();
+		listaSeguro = dao.listaSeguro();
+		req.setAttribute("seguros", listaSeguro);
 	}
 
 }

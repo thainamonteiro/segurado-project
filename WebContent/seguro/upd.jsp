@@ -85,8 +85,7 @@
 								<div class="form-check">
 									<c:forEach var="seguro" items="${seguros}">
 										<input class="form-check-input" type="checkbox"
-											value="${seguro.id}" name="seguro"
-											${paramValues.seguro.stream().anyMatch(v->v == '${seguro.id}').get() ? 'checked' : ''} >
+											value="${seguro.id}" name="seguro" >
 										<label class="form-check-label">
 											${seguro.identificacao} </label>
 										<br>
