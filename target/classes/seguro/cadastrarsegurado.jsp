@@ -18,7 +18,9 @@
 			<div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
 				<div class="card card-signin my-5">
 					<div class="card-body">
-						<a href="menu.jsp">Voltar</a> ${mensagem}
+						<span><a
+							href="${pageContext.request.contextPath}/seguro/menu.jsp">Voltar</a></span>
+						${mensagem}
 						<h5 class="card-title text-center">Cadastrar Segurado</h5>
 						<form
 							action="${pageContext.request.contextPath}/seguro/seguradoControllerServlet?acao=listarsegurado"
@@ -40,19 +42,19 @@
 								<label>Sexo:</label>
 								<div class="form-check form-check-inline">
 									<input class="form-check-input" type="radio" id="sexo"
-										name="sexo" value="feminino"> <label
+										name="sexo" value="feminino" required> <label
 										class="form-check-label">Feminino</label>
 								</div>
 								<div class="form-check form-check-inline">
 									<input class="form-check-input" type="radio" id="sexo"
-										name="sexo" value="masculino"> <label
+										name="sexo" value="masculino" required> <label
 										class="form-check-label">Masculino</label>
 								</div>
 							</div>
 
 							<div class="form-group">
 								<label>Correntista:</label> <select name="correntista"
-									id="correntista" class="form-control">
+									id="correntista" required class="form-control">
 									<option value="segunda">Sim</option>
 									<option value="terca">Não</option>
 								</select>
@@ -61,7 +63,7 @@
 							<div class="form-group">
 								<label>Dias de visita:</label> <select multiple
 									name="diasVisita" id="diasVisita" class="form-control"
-									id="exampleFormControlSelect1">
+									id="exampleFormControlSelect1" required>
 									<option value="segunda">Segunda</option>
 									<option value="terca">Terça</option>
 									<option value="quarta">Quarta</option>
@@ -72,7 +74,7 @@
 
 							<div class="form-group">
 								<label>Data de Nascimento:</label> <input type='date'
-									id="data_nasc" name="data_nasc" class="form-control" />
+									id="data_nasc" name="data_nasc" class="form-control" required />
 							</div>
 
 							<div class="form-group">

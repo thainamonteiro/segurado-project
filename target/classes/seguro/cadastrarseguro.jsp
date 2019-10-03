@@ -17,7 +17,8 @@
 			<div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
 				<div class="card card-signin my-5">
 					<div class="card-body">
-						<a href="menu.jsp">Voltar</a>
+						
+								<span><a href="${pageContext.request.contextPath}/seguro/menu.jsp">Voltar</a></span>
 						<h5 class="card-title text-center">Cadastrar Seguro</h5>
 						<form action="${pageContext.request.contextPath}/seguro/seguroControllerServlet?acao=listarseguro" method="post">
 							<div class="form-group">

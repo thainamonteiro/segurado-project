@@ -18,30 +18,40 @@
 				<div class="card card-signin my-5">
 					<div class="card-body">
 						<a href="menu.jsp">Voltar</a>
-						<h5 class="card-title text-center">Cadastrar Seguro</h5>
-						<form action="${pageContext.request.contextPath}/seguro/seguroControllerServlet?acao=listarseguro" method="post">
+						<h5 class="card-title text-center">Alterar Seguro</h5>
+						<form
+							action="${pageContext.request.contextPath}/seguro/seguroControllerServlet?acao=listarseguro"
+							method="post">
 							<div class="form-group">
 								<label>Seguros:</label> <br>
+								<div class="form-group">
+								<label>Id:</label> <input type="text" id="id" name="id"
+									class="form-control" readonly value="${seguros.id}">
+							</div>
 								<div class="form-check form-check-inline">
 									<input class="form-check-input" type="checkbox"
-										name="identificacao" id="identificacao" value="${seguro.identificacao}" > <label
+										name="identificacao" id="identificacao"
+										value="${seguros.identificacao}"> <label
 										class="form-check-label">AUTO</label>
 								</div>
 								<div class="form-check form-check-inline">
 									<input class="form-check-input" type="checkbox"
-										name="identificacao" id="identificacao" value="${seguro.identificacao}" > <label
+										name="identificacao" id="identificacao"
+										value="${seguros.identificacao}"> <label
 										class="form-check-label">RESIDENCIAL</label>
 								</div>
 								<div class="form-check form-check-inline">
 									<input class="form-check-input" type="checkbox"
-										name="identificacao" id="identificacao" value="${seguro.identificacao}" > <label
+										name="identificacao" id="identificacao"
+										value="${seguros.identificacao}"> <label
 										class="form-check-label">VIDA</label>
 								</div>
 							</div>
 
 							<div class="form-group">
 								<label>Valor:</label> <input type="number" step="any" id="valor"
-									name="valor" class="form-control" required value="${seguro.valor}" />
+									name="valor" class="form-control" required
+									value="${seguros.valor}" />
 							</div>
 
 							<button type="submit" class="btn btn-primary">Editar</button>
