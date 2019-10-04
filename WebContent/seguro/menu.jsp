@@ -15,7 +15,7 @@
 				<div class="card card-signin my-5">
 					${msg}
 					<div class="card-body">
-					   <a href="Logout"/>Sair do sistema</a>
+					   <a href="${pageContext.request.contextPath}/Logout"/>Sair do sistema</a>
 						<h5 class="card-title text-center">Menu</h5>
 						<center>
 							<a class="btn btn-primary" href="${pageContext.request.contextPath}/seguro/seguradoControllerServlet?acao=abrirseguro" role="button">Cadastro Segurado</a> 

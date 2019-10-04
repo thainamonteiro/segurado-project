@@ -31,7 +31,6 @@ public class SeguroController extends HttpServlet {
 			seguro.setValor(req.getParameter("valor"));
 
 			if (req.getParameter("id") == null) {
-				
 				dao.create(seguro);
 				listarSeguro(req, dao);
 				req.setAttribute("mensagem", "Cadastrado com sucesso! :)");

@@ -23,29 +23,14 @@
 							action="${pageContext.request.contextPath}/seguro/seguroControllerServlet?acao=listarseguro"
 							method="post">
 							<div class="form-group">
-								<label>Seguros:</label> <br>
-								<div class="form-group">
 								<label>Id:</label> <input type="text" id="id" name="id"
 									class="form-control" readonly value="${seguros.id}">
 							</div>
-								<div class="form-check form-check-inline">
-									<input class="form-check-input" type="checkbox"
-										name="identificacao" id="identificacao"
-										value="${seguros.identificacao}"> <label
-										class="form-check-label">AUTO</label>
-								</div>
-								<div class="form-check form-check-inline">
-									<input class="form-check-input" type="checkbox"
-										name="identificacao" id="identificacao"
-										value="${seguros.identificacao}"> <label
-										class="form-check-label">RESIDENCIAL</label>
-								</div>
-								<div class="form-check form-check-inline">
-									<input class="form-check-input" type="checkbox"
-										name="identificacao" id="identificacao"
-										value="${seguros.identificacao}"> <label
-										class="form-check-label">VIDA</label>
-								</div>
+
+							<div class="form-group">
+								<label>Seguro:</label> <input type="text" id="identificacao"
+									name="identificacao" value="${seguros.identificacao}"
+									class="form-control" required />
 							</div>
 
 							<div class="form-group">

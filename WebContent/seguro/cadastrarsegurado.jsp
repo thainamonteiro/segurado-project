@@ -53,17 +53,18 @@
 							</div>
 
 							<div class="form-group">
-								<label>Correntista:</label> <select name="correntista"
+								<label>Correntista:</label> 
+								<select name="correntista"
 									id="correntista" required class="form-control">
-									<option value="segunda">Sim</option>
-									<option value="terca">Não</option>
+									<option value="sim">Sim</option>
+									<option value="nao">Não</option>
 								</select>
 							</div>
 
 							<div class="form-group">
 								<label>Dias de visita:</label> <select multiple
 									name="diasVisita" id="diasVisita" class="form-control"
-									id="exampleFormControlSelect1" required>
+									 required>
 									<option value="segunda">Segunda</option>
 									<option value="terca">Terça</option>
 									<option value="quarta">Quarta</option>

@@ -24,6 +24,7 @@ public class LoginController extends HttpServlet {
 
 			String usuario = req.getParameter("usuario");
 			String senha = req.getParameter("senha");
+			
 
 			boolean res = dao.buscarLogin(usuario, senha);
 

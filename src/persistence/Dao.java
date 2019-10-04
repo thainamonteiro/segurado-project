@@ -27,7 +27,7 @@ public class Dao<T> {
 			manager.persist(dao);
 			manager.getTransaction().commit();
 			System.out.println("Sucesso!");
-			manager.close();
+//			manager.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 			manager.getTransaction().rollback();

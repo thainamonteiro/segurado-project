@@ -39,7 +39,7 @@ public class SeguradoController extends HttpServlet {
 			segurado.setCorrentista(req.getParameter("correntista"));
 			segurado.setDiasVisita(req.getParameterValues("diasVisita"));
 			segurado.setData_nas(req.getParameter("data_nas"));
-			segurado.setData_alt(req.getParameter("data_alt"));
+			segurado.setData_alt(new Date());
 			segurado.setData_cad(new Date());
 
 			List<Seguro> listaSeguro = new ArrayList<Seguro>();
@@ -67,7 +67,7 @@ public class SeguradoController extends HttpServlet {
 			getServletContext().getRequestDispatcher("/seguro/listarsegurado.jsp").forward(req, resp);
 
 		} catch (Exception e) {
-			e.printStackTrace();
+//			e.printStackTrace();
 			req.setAttribute("mensagem", "Não foi cadastrado! :" + e.getMessage());
 			getServletContext().getRequestDispatcher("/seguro/cadastrarsegurado.jsp").forward(req, resp);
 		}

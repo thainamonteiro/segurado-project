@@ -17,27 +17,17 @@
 			<div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
 				<div class="card card-signin my-5">
 					<div class="card-body">
-						
-								<span><a href="${pageContext.request.contextPath}/seguro/menu.jsp">Voltar</a></span>
+
+						<span><a
+							href="${pageContext.request.contextPath}/seguro/menu.jsp">Voltar</a></span>
 						<h5 class="card-title text-center">Cadastrar Seguro</h5>
-						<form action="${pageContext.request.contextPath}/seguro/seguroControllerServlet?acao=listarseguro" method="post">
+						<form
+							action="${pageContext.request.contextPath}/seguro/seguroControllerServlet?acao=listarseguro"
+							method="post">
+
 							<div class="form-group">
-								<label>Seguros:</label> <br>
-								<div class="form-check form-check-inline">
-									<input class="form-check-input" type="checkbox"
-										name="identificacao" id="identificacao" value="auto"> <label
-										class="form-check-label">AUTO</label>
-								</div>
-								<div class="form-check form-check-inline">
-									<input class="form-check-input" type="checkbox"
-										name="identificacao" id="identificacao" value="residencial"> <label
-										class="form-check-label">RESIDENCIAL</label>
-								</div>
-								<div class="form-check form-check-inline">
-									<input class="form-check-input" type="checkbox"
-										name="identificacao" id="identificacao" value="vida"> <label
-										class="form-check-label">VIDA</label>
-								</div>
+								<label>Seguro:</label> <input type="text" id="identificacao"
+									name="identificacao" class="form-control" required />
 							</div>
 
 							<div class="form-group">
