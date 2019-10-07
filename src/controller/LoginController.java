@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import persistence.Dao;
+import service.Criptografar;
 
 public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -21,14 +22,24 @@ public class LoginController extends HttpServlet {
 		Dao dao = new Dao();
 
 		try {
-
+			
+			
 			String usuario = req.getParameter("usuario");
 			String senha = req.getParameter("senha");
 			
+//			Criptografar.encriptografar();
+//			
+//			
+//			if(login.getSenha().equals(Criptografar.encriptografar("umasenha"))) {
+//				System.out.println("Funcionou!");
+//			}else {
+//				System.out.println("Noop");
+//			}
+//			
 
 			boolean res = dao.buscarLogin(usuario, senha);
 
-			if (res == true) {
+			if (res == true ) {
 
 				HttpSession session = req.getSession();
 				session.setAttribute("usuario", usuario);
